@@ -1,11 +1,18 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Basic Mirador</title>
-  </head>
-  <body>
-    <div id="demo"></div>
-    <script src="dist/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title>SoDUCo Mirador Viewer</title>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script src="dist/main.js"></script>
+  <script>
+    import configData from './config.json';
+    createViewer(configData);
+  </script>
+</body>
+
 </html>
