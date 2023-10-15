@@ -10,8 +10,25 @@
   <div id="main"></div>
   <script src="dist/main.js"></script>
   <script>
-    import configData from './config.json';
-    createViewer(configData);
+    const configData = {
+      "windows": [
+        {
+          "loadedManifest": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63959929/manifest.json"
+        }
+      ],
+      "catalog": [
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62929887/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6266174v/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63959929/manifest.json"
+        }
+      ]
+    };
+    MiradorSoDUCo.createViewer(configData);
   </script>
 </body>
 
