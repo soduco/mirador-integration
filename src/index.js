@@ -1,6 +1,8 @@
 import Mirador from 'mirador/dist/es/src/index';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
 import miradorDownloadPlugins from 'mirador-dl-plugin';
+import canvasNavigationPlugin from 'mirador-canvasnavigation';
+
 //import downloadDialogPlugin from 'mirador-downloaddialog/es';
 export function createViewer(jsonData) {
   const config = {
@@ -25,6 +27,6 @@ export function createViewer(jsonData) {
   };
 
   Mirador.viewer(config, [
-    ...miradorImageToolsPlugin, miradorDownloadPlugins,// downloadDialogPlugin,
+    ...miradorImageToolsPlugin, miradorDownloadPlugins,canvasNavigationPlugin,// downloadDialogPlugin,
   ]);
 }

@@ -11,74 +11,407 @@
   <script src="dist/main.js"></script>
   <script>
     const searchParams = new URLSearchParams(window.location.search);
-    for (const p of searchParams) {
-      console.log(p);
-    }
+    //for (const p of searchParams) {
+    //  console.log(p);
+    //}
     if (searchParams.has("manifest")) {
-      loadedManifest = searchParams.get("manifest");
+      manifest = {
+          "loadedManifest": searchParams.get("manifest")
+      };
+      if (searchParams.has("view")) {
+        manifest["canvasId"] = searchParams.get("view")
+      }
+      //console.log(manifest);
+      windows = [manifest];
     } else {
-      loadedManifest = "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63959929/manifest.json";
+      manifest = {
+          "loadedManifest": "https://directory.geohistoricaldata.org/iiif/manifest.json"
+      }
+      windows = [manifest];
     }
     const configData = {
-      "windows": [
-        {
-          "loadedManifest": loadedManifest
-        }
-      ],
+      "windows": windows,
       "catalog": [
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k115315z/manifest.json"
-        },
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124557p/manifest.json"
-        },
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k14154648/manifest.json"
-        },
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62915718/manifest.json"
-        },
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62929887/manifest.json"
-        },
-        {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6305463c/manifest.json"
-        },
         {
           "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6357464s/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6429210k/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1265821s/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k933018r/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6513669p/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124551d/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6501521m/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k65838751/manifest.json"
         },
         {
           "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245624/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6266174v/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124563h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124564w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245658/manifest.json"
         },
         {
           "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6292888w/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62931221/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124566n/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63243601/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k995078t/manifest.json"
         },
         {
-          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63959929/manifest.json"
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62963551/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k995082w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6290660h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k96682997/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k115315z/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245671/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6269398w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62671515/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6266174v/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k933018r/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6274589b/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1159835j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k65215764/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6429210k/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k64292110/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63482147/manifest.json"
         },
         {
           "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6525634c/manifest.json"
         },
         {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6451715q/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k8860608/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6305463c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6318531z/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6324389h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63243920/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6309075f/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6333200c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63243905/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6333170p/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k96727875/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9668579h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9764746t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k97645375/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9672117f/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k32002386/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9763554c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9763553z/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9677392n/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9692809v/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9762929c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9764647w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9669143t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9677737t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9668037f/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k96839542/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k96762564/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9685861g/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9763471j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k3200298g/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9762899p/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k97630871/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k32002423/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k32004844/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9684454n/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9732740w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9684013b/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9692626p/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9685098r/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k32100040/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9764402m/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k97631451/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k32101243/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k3208950j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k3208946n/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k3212492k/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9776121t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k3209924c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k5324688x/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9775724t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62931221/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6286466w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6393838j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6331310g/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6292987t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62915325/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62906378/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6391515w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6315927h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63239616/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6319106t/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6341277k/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6315985z/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63959929/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63197984/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6389871r/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6319811j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6282019m/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6314752k/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124551d/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124552s/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1175057p/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245535/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124554j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62915570/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245569/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62929887/manifest.json"
+        },
+        {
           "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k9764396b/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124557p/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1245582/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124559f/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124560c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k62915718/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k124561r/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63243601/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6456610v/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k6417087j/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k14154648/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1415799h/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1415641z/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k11833225/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k992370w/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k11817648/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k11825370/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k11808753/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k1184615c/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k63812538/manifest.json"
+        },
+        {
+          "manifestId": "https://directory.geohistoricaldata.org/iiif/ark:/12148/bpt6k5818546d/manifest.json"
         }
       ]
     };
